@@ -29,12 +29,17 @@ public class Lab3Main {
             return;
         }
         int n = assessments.getRecordAmount(neighbourhood);
-        double mean = assessments.getMean(neighbourhood);
-        double median = assessments.getMedian(neighbourhood);
+        String formatted_n = String.format("%,d", n);
 
-        System.out.println("There are " + n + " properties in " + neighbourhood);
-        System.out.println("The mean value is " + turnToMoney(mean));
-        System.out.println("The median value is " + turnToMoney(median));
+        int mean = (int) assessments.getMean(neighbourhood);
+        String formatted_mean = String.format("%,d", mean);
+
+        int median = (int) assessments.getMedian(neighbourhood);
+        String formatted_median = String.format("%,d", median);
+
+        System.out.println("There are " + formatted_n + " properties in " + neighbourhood);
+        System.out.println("The mean value is CAD " + formatted_mean);
+        System.out.println("The median value is CAD " + formatted_median);
 
     }
 
@@ -44,20 +49,22 @@ public class Lab3Main {
             return;
         }
         int n = assessments.getAssessmentAmount(assessment);
-        double min = assessments.getLowestAssessment(assessment);
-        double max = assessments.getHighestAssessment(assessment);
+        String formatted_n = String.format("%,d", n);
 
-        System.out.println("There are " + n + " " + assessment + " properties in Edmonton"); //fix hardcoding of city?
-        System.out.println("The min value is " + turnToMoney(min));
-        System.out.println("The max value is " + turnToMoney(max));
+        int min = (int)assessments.getLowestAssessment(assessment);
+        String formatted_min = String.format("%,d", min);
+
+        int max = (int) assessments.getHighestAssessment(assessment);
+        String formatted_max = String.format("%,d", max);
+
+        System.out.println("There are " + formatted_n + " " + assessment + " properties in Edmonton"); //fix hardcoding of city?
+        System.out.println("The min value is CAD " + formatted_min);
+        System.out.println("The max value is CAD " + formatted_max);
 
 
     }
 
 
-    public static String turnToMoney(double value){
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        return currencyFormat.format(value);
-    }
+
 
 }

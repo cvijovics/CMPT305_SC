@@ -31,18 +31,29 @@ public class Lab2Main {
     public static void overall(PropertyAssessments assessments) {
 
         int n = assessments.getRecordAmount();
-        double min = assessments.getLowestValue();
-        double max = assessments.getHighestValue();
-        double range = assessments.getRange();
-        double mean = assessments.getMean();
-        double median = assessments.getMedian();
+
+        int min = (int) assessments.getLowestValue();
+        String formatted_min = String.format("%,d", min);
+
+        int max = (int) assessments.getHighestValue();
+        String formatted_max = String.format("%,d", max);
+
+        int range = (int) assessments.getRange();
+        String formatted_range = String.format("%,d", range);
+
+        int mean = (int) assessments.getMean();
+        String formatted_mean = String.format("%,d", mean);
+
+        int median = (int) assessments.getMedian();
+        String formatted_median = String.format("%,d", median);
+
         System.out.println("Descriptive statistics of all property assessments\n" +
                 "n = " + n + "\n" +
-                "min = " + turnToMoney(min) + "\n" +
-                "max = " + turnToMoney(max) + "\n" +
-                "range = " + turnToMoney(range) + "\n" +
-                "mean = " + turnToMoney(mean) + "\n" +
-                "median = " + turnToMoney(median));
+                "min = $" + formatted_min + "\n" +
+                "max = $" + formatted_max + "\n" +
+                "range = $" + formatted_range + "\n" +
+                "mean = $" + formatted_mean + "\n" +
+                "median = $" + formatted_median);
     }
 
     public static void accountNumStats(PropertyAssessments assessments, String accountNum) {
@@ -52,9 +63,12 @@ public class Lab2Main {
             return;
         }
 
+        int value = property.getValue();
+        String formatted_value = String.format("%,d", value);
+
         System.out.println("Account number = " + property.getAccountNum() + "\n" +
                 "Address = " + property.getAddress() + "\n" +
-                "Assessed Value = " + turnToMoney(property.getValue()) + "\n" +
+                "Assessed Value = " +  formatted_value + "\n" +
                 "Assessment Class = " + property.getAssessment() + "\n" +
                 "Neighbourhood = " + property.getNeighbourhood() + "\n" +
                 "Location = " + property.getGeolocation() + "\n");
@@ -67,24 +81,36 @@ public class Lab2Main {
         }
 
         int n = assessments.getRecordAmount(neighbourhood);
-        double min = assessments.getLowestValue(neighbourhood);
-        double max = assessments.getHighestValue(neighbourhood);
-        double range = assessments.getRange(neighbourhood);
-        double mean = assessments.getMean(neighbourhood);
-        double median = assessments.getMedian(neighbourhood);
+        String formatted_n = String.format("%,d", n);
+
+        int min = (int) assessments.getLowestValue(neighbourhood);
+        String formatted_min = String.format("%,d", min);
+
+
+        int max = (int) assessments.getHighestValue(neighbourhood);
+        String formatted_max = String.format("%,d", max);
+
+
+        int range = (int) assessments.getRange(neighbourhood);
+        String formatted_range = String.format("%,d", range);
+
+
+        int mean = (int) assessments.getMean(neighbourhood);
+        String formatted_mean = String.format("%,d", mean);
+
+        int median = (int) assessments.getMedian(neighbourhood);
+        String formatted_median = String.format("%,d", median);
+
+
         System.out.println("Statistics (neighbourhood = " + neighbourhood + ")\n" +
-                "n = " + n + "\n" +
-                "min = " + turnToMoney(min) + "\n" +
-                "max = " + turnToMoney(max) + "\n" +
-                "range = " + turnToMoney(range) + "\n" +
-                "mean = " + turnToMoney(mean) + "\n" +
-                "median = " + turnToMoney(median));
+                "n = " + formatted_n + "\n" +
+                "min = $" + formatted_min + "\n" +
+                "max = $" + formatted_max + "\n" +
+                "range = $" + formatted_range + "\n" +
+                "mean = $" + formatted_mean + "\n" +
+                "median = $" + formatted_median);
 
     }
 
-    public static String turnToMoney(double value){
-        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
-        return currencyFormat.format(value);
-    }
 
 }
